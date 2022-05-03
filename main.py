@@ -5,7 +5,7 @@ import pdfkit
 PYTHON_INTERP = "python"
 
 
-PATH_CONV = r'path/to/conv'
+PATH_CONV = r'/home/lt/Documents/pdf_converter'
 
 error_list = []
 
@@ -21,7 +21,7 @@ def convert_doc_to_pdf(in_file):
 
 def convert_chm(in_file):
     directory = os.path.splitext(in_file)[0]
-    subprocess.call(["hh.exe", "-decompile", directory, in_file], stdout=subprocess.PIPE) # in fact 7zip is doing a far better job at decompressing chm files
+    subprocess.call(["7z -y", "e", directory, in_file], stdout=subprocess.PIPE) # in fact 7zip is doing a far better job at decompressing chm files
 
 def change_ext_to_pdf(in_file):
     return os.path.splitext(in_file)[0]+".pdf"
